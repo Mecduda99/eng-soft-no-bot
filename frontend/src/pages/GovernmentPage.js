@@ -62,12 +62,58 @@ function GovernmentPage() {
 
   return (
     <div className="government-page">
-      <h2 style={{ color: '#00FF00' }}>Painel do Governo</h2>
-      <p>Monitore identidades, defina padrões e garanta conformidade regulatória</p>
+      <h2 style={{ color: '#00FF00' }}>🏛️ Painel do Governo - Governança Digital</h2>
+      <div className="intro-section" style={{ 
+        padding: '20px', 
+        border: '1px solid #00FF00', 
+        borderRadius: '8px', 
+        marginBottom: '30px',
+        backgroundColor: '#1a1a1a'
+      }}>
+        <h3 style={{ color: '#00FF00', marginBottom: '15px' }}>🏆 Liderança em Identidade Digital Nacional</h3>
+        <p style={{ marginBottom: '15px', lineHeight: '1.6' }}>
+          O sistema "Não Sou Robô" estabelece um novo padrão para identidade digital no Brasil, 
+          integrando-se perfeitamente com Gov.br e CIN para criar um ecossistema seguro e confiável 
+          de identificação digital descentralizada.
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '15px' }}>
+          <div style={{ padding: '15px', border: '1px solid #333', borderRadius: '4px' }}>
+            <strong style={{ color: '#00FF00' }}>📜 Conformidade LGPD:</strong><br/>
+            Garante proteção total de dados pessoais com Zero-Knowledge Proofs
+          </div>
+          <div style={{ padding: '15px', border: '1px solid #333', borderRadius: '4px' }}>
+            <strong style={{ color: '#00FF00' }}>🔗 Interoperabilidade:</strong><br/>
+            Padrões W3C DID compatíveis com sistemas internacionais
+          </div>
+          <div style={{ padding: '15px', border: '1px solid #333', borderRadius: '4px' }}>
+            <strong style={{ color: '#00FF00' }}>🚪 Soberania Digital:</strong><br/>
+            Infraestrutura nacional independente de big techs estrangeiras
+          </div>
+        </div>
+      </div>
 
       <div className="card">
-        <h3>Definição de Padrões</h3>
-        <p>Configure modos de integração Gov.br e CIN</p>
+        <h3>📜 Definição de Padrões - Arquitetura Nacional</h3>
+        <div style={{ 
+          padding: '15px', 
+          border: '1px solid #333', 
+          borderRadius: '6px', 
+          marginBottom: '15px',
+          backgroundColor: '#2a2a2a'
+        }}>
+          <p style={{ marginBottom: '10px' }}>
+            <strong>Estabeleça os padrões nacionais para identidade digital:</strong>
+          </p>
+          <ul style={{ marginLeft: '20px', lineHeight: '1.6' }}>
+            <li><strong>Formato DID:</strong> Estrutura padronizada para identidades brasileiras</li>
+            <li><strong>Níveis de Validação:</strong> Critérios de segurança por setor</li>
+            <li><strong>Integração Gov.br:</strong> Protocolos de comunicação seguros</li>
+            <li><strong>Conformidade Legal:</strong> Aderência à LGPD e Marco Civil</li>
+          </ul>
+        </div>
+        <p style={{ color: '#ccc', marginBottom: '15px' }}>
+          Configure os parâmetros fundamentais do sistema nacional:
+        </p>
         
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginTop: '20px' }}>
           <div>
@@ -100,8 +146,27 @@ function GovernmentPage() {
       </div>
 
       <div className="card">
-        <h3>Monitoramento de Identidades</h3>
-        <p>Consulte e monitore identidades para garantir conformidade LGPD</p>
+        <h3>🔍 Monitoramento de Identidades - Auditoria e Conformidade</h3>
+        <div style={{ 
+          padding: '15px', 
+          border: '1px solid #333', 
+          borderRadius: '6px', 
+          marginBottom: '15px',
+          backgroundColor: '#2a2a2a'
+        }}>
+          <p style={{ marginBottom: '10px' }}>
+            <strong>Capacidades de auditoria e monitoramento:</strong>
+          </p>
+          <ul style={{ marginLeft: '20px', lineHeight: '1.6' }}>
+            <li><strong>Auditoria LGPD:</strong> Verificação de conformidade com proteção de dados</li>
+            <li><strong>Rastreabilidade:</strong> Histórico completo de operações sem expor dados</li>
+            <li><strong>Métricas Nacionais:</strong> Estatísticas de adoção e uso do sistema</li>
+            <li><strong>Detecção de Anomalias:</strong> Identificação de padrões suspeitos</li>
+          </ul>
+        </div>
+        <p style={{ color: '#ccc', marginBottom: '15px' }}>
+          Consulte identidades específicas para auditoria e conformidade:
+        </p>
         
         <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
           <input
@@ -148,8 +213,27 @@ function GovernmentPage() {
       </div>
 
       <div className="card">
-        <h3>Monitoramento de Revogações</h3>
-        <p>Acompanhe credenciais revogadas e status blockchain</p>
+        <h3>❌ Monitoramento de Revogações - Segurança Blockchain</h3>
+        <div style={{ 
+          padding: '15px', 
+          border: '1px solid #333', 
+          borderRadius: '6px', 
+          marginBottom: '15px',
+          backgroundColor: '#2a2a2a'
+        }}>
+          <p style={{ marginBottom: '10px' }}>
+            <strong>Gerenciamento de credenciais comprometidas:</strong>
+          </p>
+          <ul style={{ marginLeft: '20px', lineHeight: '1.6' }}>
+            <li><strong>Revogação Instantânea:</strong> Invalidação imediata em toda a rede</li>
+            <li><strong>Registro Blockchain:</strong> Prova imutável de revogação</li>
+            <li><strong>Notificação Automática:</strong> Alerta para todas as partes interessadas</li>
+            <li><strong>Auditoria de Motivos:</strong> Rastreamento de causas de revogação</li>
+          </ul>
+        </div>
+        <p style={{ color: '#ccc', marginBottom: '15px' }}>
+          Consulte o status de revogação de credenciais específicas:
+        </p>
         
         <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
           <input
@@ -195,8 +279,27 @@ function GovernmentPage() {
       </div>
 
       <div className="card">
-        <h3>Infraestrutura Blockchain</h3>
-        <p>Status e configurações da infraestrutura blockchain aplicável</p>
+        <h3>⛓️ Infraestrutura Blockchain - Soberania Digital</h3>
+        <div style={{ 
+          padding: '15px', 
+          border: '1px solid #00FF00', 
+          borderRadius: '6px', 
+          marginBottom: '15px',
+          backgroundColor: '#0a2a0a'
+        }}>
+          <p style={{ marginBottom: '10px' }}>
+            <strong>Rede blockchain nacional descentralizada:</strong>
+          </p>
+          <ul style={{ marginLeft: '20px', lineHeight: '1.6' }}>
+            <li><strong>Nós Governamentais:</strong> Infraestrutura controlada pelo Estado brasileiro</li>
+            <li><strong>Consenso Democrático:</strong> Algoritmo que garante participação equilibrada</li>
+            <li><strong>Escalabilidade:</strong> Suporte para milhões de identidades simultâneas</li>
+            <li><strong>Interoperabilidade:</strong> Conexão com redes internacionais quando necessário</li>
+          </ul>
+        </div>
+        <p style={{ color: '#ccc', marginBottom: '15px' }}>
+          Status em tempo real da infraestrutura blockchain nacional:
+        </p>
         
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', marginTop: '20px' }}>
           <div style={{ textAlign: 'center' }}>

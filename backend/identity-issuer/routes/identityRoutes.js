@@ -5,6 +5,16 @@ const router = express.Router();
 router.post('/', async (req, res) => {
   try {
     const { did } = req.body;
+    
+    // Input validation
+    if (!did || typeof did !== 'string' || did.length < 10 || did.length > 100) {
+      return res.status(400).json({ error: 'DID inválido' });
+    }
+    
+    if (!/^did:[a-z0-9]+:[a-zA-Z0-9._-]+$/.test(did)) {
+      return res.status(400).json({ error: 'Formato DID inválido' });
+    }
+    
     const db = req.app.locals.db;
     
     await db.run(
@@ -14,7 +24,8 @@ router.post('/', async (req, res) => {
     
     res.status(201).json({ message: 'DID criado com sucesso', did });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error('Error creating identity:', error);
+    res.status(500).json({ error: 'Erro interno do servidor' });
   }
 });
 

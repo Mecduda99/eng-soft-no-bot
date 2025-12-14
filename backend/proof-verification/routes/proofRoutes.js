@@ -13,7 +13,21 @@ const blockchainAdapter = {
 router.post('/verify', async (req, res) => {
   try {
     const { zkProof } = req.body;
-    const { did, vc_id } = zkProof;
+    
+    // Input validation
+    if (!zkProof || typeof zkProof !== 'object') {
+      return res.status(400).json({ error: 'ZK-Proof inválido' });
+    }
+    
+    const { did, vc_id, proof } = zkProof;
+    
+    if (!did || !vc_id || !proof) {
+      return res.status(400).json({ error: 'Campos obrigatórios: did, vc_id, proof' });
+    }
+    
+    if (typeof did !== 'string' || typeof vc_id !== 'string') {
+      return res.status(400).json({ error: 'DID e VC_ID devem ser strings' });
+    }
     
     const db = req.app.locals.db;
     const revocationCache = req.app.locals.revocationCache;

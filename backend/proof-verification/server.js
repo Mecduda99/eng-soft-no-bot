@@ -1,14 +1,21 @@
 const express = require('express');
 const cors = require('cors');
-const Database = require('./shared/database');
-const EventBus = require('./shared/eventBus');
+const helmet = require('helmet');
+const Database = require('../shared/database');
+const EventBus = require('../shared/eventBus');
 const proofRoutes = require('./routes/proofRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3002;
 
-app.use(cors());
-app.use(express.json());
+// Security middleware
+app.use(helmet());
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:8080'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+}));
+app.use(express.json({ limit: '1mb' }));
 
 const db = new Database('proof-verification');
 const eventBus = new EventBus();

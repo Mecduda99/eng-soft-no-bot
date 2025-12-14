@@ -1,27 +1,56 @@
 const express = require('express');
 const cors = require('cors');
-const Database = require('./shared/database');
-const EventBus = require('./shared/eventBus');
+const path = require('path');
+const sqlite3 = require('sqlite3').verbose();
 const identityRoutes = require('./routes/identityRoutes');
+
+// Simple database class
+class SimpleDatabase {
+  constructor(serviceName) {
+    const dbPath = path.resolve(__dirname, '../../database', `${serviceName}.sqlite`);
+    this.db = new sqlite3.Database(dbPath);
+  }
+  
+  async run(sql, params = []) {
+    return new Promise((resolve, reject) => {
+      this.db.run(sql, params, function(err) {
+        if (err) reject(err);
+        else resolve({ id: this.lastID, changes: this.changes });
+      });
+    });
+  }
+  
+  async get(sql, params = []) {
+    return new Promise((resolve, reject) => {
+      this.db.get(sql, params, (err, row) => {
+        if (err) reject(err);
+        else resolve(row);
+      });
+    });
+  }
+}
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:8080'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+}));
 app.use(express.json());
 
-// Initialize database and event bus
-const db = new Database('identity-issuer');
-const eventBus = new EventBus();
+// Initialize database
+const db = new SimpleDatabase('identity-issuer');
 
 // Database is already initialized by setup script
 async function initDatabase() {
   console.log('Using identity-issuer database');
 }
 
-// Make db and eventBus available to routes
+// Make db available to routes
 app.locals.db = db;
-app.locals.eventBus = eventBus;
+app.locals.eventBus = { publish: () => Promise.resolve() }; // Mock event bus
 
 app.use('/identities', identityRoutes);
 
@@ -32,7 +61,6 @@ app.get('/health', (req, res) => {
 async function startServer() {
   try {
     await initDatabase();
-    await eventBus.connect();
     
     app.listen(PORT, () => {
       console.log(`Identity-Issuer Service running on port ${PORT}`);

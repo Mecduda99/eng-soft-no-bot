@@ -93,11 +93,39 @@ function CitizenPage() {
 
   return (
     <div className="citizen-page">
-      <h2 style={{ color: '#00FF00' }}>Painel do Cidadão</h2>
-      <p>Gerencie sua identidade digital e credenciais verificáveis</p>
+      <h2 style={{ color: '#00FF00' }}>👤 Painel do Cidadão - Identidade Digital Segura</h2>
+      <div className="intro-section" style={{ 
+        padding: '20px', 
+        border: '1px solid #00FF00', 
+        borderRadius: '8px', 
+        marginBottom: '30px',
+        backgroundColor: '#1a1a1a'
+      }}>
+        <h3 style={{ color: '#00FF00', marginBottom: '15px' }}>🔐 Sua Identidade Digital Descentralizada</h3>
+        <p style={{ marginBottom: '15px', lineHeight: '1.6' }}>
+          Crie e gerencie sua <strong>identidade digital (DID)</strong> de forma segura e descentralizada. 
+          Você tem controle total sobre seus dados pessoais e pode provar sua humanidade 
+          sem revelar informações sensíveis.
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '15px' }}>
+          <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px' }}>
+            <strong style={{ color: '#00FF00' }}>✓ Privacidade Total:</strong> Seus dados ficam com você
+          </div>
+          <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px' }}>
+            <strong style={{ color: '#00FF00' }}>✓ Prova de Humanidade:</strong> Zero-Knowledge Proofs
+          </div>
+          <div style={{ padding: '10px', border: '1px solid #333', borderRadius: '4px' }}>
+            <strong style={{ color: '#00FF00' }}>✓ Integração Oficial:</strong> Vinculação Gov.br/CIN
+          </div>
+        </div>
+      </div>
 
       <div className="card">
-        <h3>Criar/Consultar Identidade Digital</h3>
+        <h3>🆔 Passo 1: Criar/Consultar Identidade Digital (DID)</h3>
+        <p style={{ marginBottom: '15px', color: '#ccc' }}>
+          O DID (Decentralized Identifier) é sua identidade única na blockchain. 
+          É como um CPF digital, mas descentralizado e sob seu controle total.
+        </p>
         <input
           type="text"
           className="input"
@@ -130,7 +158,11 @@ function CitizenPage() {
       )}
 
       <div className="card">
-        <h3>Vincular ao Gov.br/CIN</h3>
+        <h3>🏛️ Passo 2: Vincular ao Gov.br/CIN</h3>
+        <p style={{ marginBottom: '15px', color: '#ccc' }}>
+          Conecte sua identidade digital com o sistema oficial do governo brasileiro. 
+          Isso garante máxima confiabilidade e conformidade legal para sua identidade.
+        </p>
         <input
           type="text"
           className="input"
@@ -144,7 +176,11 @@ function CitizenPage() {
       </div>
 
       <div className="card">
-        <h3>Gerenciar Credenciais</h3>
+        <h3>📜 Passo 3: Gerenciar Credenciais Verificáveis</h3>
+        <p style={{ marginBottom: '15px', color: '#ccc' }}>
+          Credenciais são "certificados digitais" que comprovam aspectos da sua identidade. 
+          Você pode emitir novas credenciais ou revogar as comprometidas.
+        </p>
         <input
           type="text"
           className="input"
@@ -163,8 +199,25 @@ function CitizenPage() {
       </div>
 
       <div className="verification-box">
-        <h3>Prova de Humanidade</h3>
-        <p>Status: Aguardando Prova de Humanidade...</p>
+        <h3>🤖 Passo 4: Prova de Humanidade (Anti-Bot)</h3>
+        <div style={{ 
+          padding: '15px', 
+          border: '1px solid #00FF00', 
+          borderRadius: '6px', 
+          marginBottom: '15px',
+          backgroundColor: '#0a2a0a'
+        }}>
+          <p style={{ marginBottom: '10px' }}>
+            <strong>Como funciona:</strong> Usando Zero-Knowledge Proofs, você pode provar que é uma pessoa real 
+            sem revelar nenhum dado pessoal. É matematicamente impossível para bots falsificarem essa prova.
+          </p>
+          <p style={{ color: '#00FF00' }}>
+            ✓ Prova criptográfica de humanidade<br/>
+            ✓ Nenhum dado pessoal é revelado<br/>
+            ✓ Impossível de ser falsificada por bots
+          </p>
+        </div>
+        <p><strong>Status:</strong> <span style={{ color: '#FFFF00' }}>Aguardando Prova de Humanidade...</span></p>
         <button 
           className="btn" 
           onClick={handleVerifyHumanity} 

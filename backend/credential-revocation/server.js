@@ -1,13 +1,17 @@
 const express = require('express');
 const cors = require('cors');
-const Database = require('./shared/database');
-const EventBus = require('./shared/eventBus');
+const Database = require('../shared/database');
+const EventBus = require('../shared/eventBus');
 const revocationRoutes = require('./routes/revocationRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3003;
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:8080'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+}));
 app.use(express.json());
 
 const db = new Database('credential-revocation');
