@@ -1,0 +1,23 @@
+{
+  "name": "nao-sou-robo-backend",
+  "version": "1.0.0",
+  "description": "Plataforma robusta de Verificação e Privacidade em Blockchain",
+  "workspaces": [
+    "identity-issuer",
+    "proof-verification", 
+    "credential-revocation",
+    "api-gateway",
+    "shared"
+  ],
+  "scripts": {
+    "start": "concurrently \"npm run start:gateway\" \"npm run start:identity\" \"npm run start:proof\" \"npm run start:revocation\"",
+    "start:gateway": "cd api-gateway && npm start",
+    "start:identity": "cd identity-issuer && npm start",
+    "start:proof": "cd proof-verification && npm start",
+    "start:revocation": "cd credential-revocation && npm start",
+    "test": "npm run test --workspaces"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

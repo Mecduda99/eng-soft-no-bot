@@ -1,0 +1,11 @@
+{
+  "name": "nao-sou-robo-database",
+  "version": "1.0.0",
+  "main": "setup.js",
+  "scripts": {
+    "setup": "node setup.js"
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.6"
+  }
+}

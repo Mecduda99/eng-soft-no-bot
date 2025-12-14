@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: nao-sou-robo-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin123
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: ./api-gateway/Dockerfile
+    container_name: nao-sou-robo-gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - identity-issuer
+      - proof-verification
+      - credential-revocation
+    volumes:
+      - ./data:/usr/src/app/data
+
+  identity-issuer:
+    build:
+      context: .
+      dockerfile: ./identity-issuer/Dockerfile
+    container_name: nao-sou-robo-identity
+    ports:
+      - "3001:3001"
+    depends_on:
+      - rabbitmq
+    volumes:
+      - ./data:/usr/src/app/data
+    environment:
+      - RABBITMQ_URL=amqp://admin:admin123@rabbitmq:5672
+
+  proof-verification:
+    build:
+      context: .
+      dockerfile: ./proof-verification/Dockerfile
+    container_name: nao-sou-robo-proof
+    ports:
+      - "3002:3002"
+    depends_on:
+      - rabbitmq
+    volumes:
+      - ./data:/usr/src/app/data
+    environment:
+      - RABBITMQ_URL=amqp://admin:admin123@rabbitmq:5672
+
+  credential-revocation:
+    build:
+      context: .
+      dockerfile: ./credential-revocation/Dockerfile
+    container_name: nao-sou-robo-revocation
+    ports:
+      - "3003:3003"
+    depends_on:
+      - rabbitmq
+    volumes:
+      - ./data:/usr/src/app/data
+    environment:
+      - RABBITMQ_URL=amqp://admin:admin123@rabbitmq:5672
+
+volumes:
+  rabbitmq_data:
