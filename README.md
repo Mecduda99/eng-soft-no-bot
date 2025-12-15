@@ -1,4 +1,4 @@
-![Imagem1-loom](https://github.com/user-attachments/assets/ff6a343b-f3e8-49be-aaaa-8efa76e6e153)# Plataforma "Não Sou Robô" - Sistema Anti-Fraude Blockchain
+# Plataforma "Não Sou Robô" - Sistema Anti-Fraude Blockchain
 
 Plataforma robusta de Verificação e Privacidade em Blockchain para combater fraudes digitais e bots, assegurando identidade digital segura e descentralizada.
 
